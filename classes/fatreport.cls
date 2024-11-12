@@ -1,20 +1,7 @@
 %%%%% fatreport.cls %%%%%
 
-%% If using TeXLive, put this class under ~/texmf/tex/latex/local for TeXLive detection %%
-%% Should work out of the box in Overleaf %%
-
-%%% Prerequisites %%%
-
-% 1. Using CJK font "AR PL Ukai TW", install it manually if not installed, otherwise change the font in the "\setCJKmainfont{}" line.   
-% If writing a pure English document, may comment out the `\usepackage{xeCJK}` and `\setCJKmainfont{AR PL Ukai TW}` lines, and things should compile.  
-
-%%% Usage %%%
-
-% 1. To use this class: \documentclass{fatreport}
-% 2. This class is based on the article class. 
-% Passing an option to this class directly is passing the option to article. 
-% E.g. \documentclass[12pt]{fatreport} works as specifying \documentclass[t]{article} internally. 
-% 3. BibTeX is supported, just use as usual. 
+%% A LaTeX class with CJK environment, fancy format and more commonly used LaTeX features %%
+%% After setting up the prerequisites, should work out of the box on Overleaf %%
 
 %%%%% Identification %%%%%
 

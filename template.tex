@@ -1,0 +1,110 @@
+\documentclass{article}
+% \usepackage[utf8]{inputenc}
+\usepackage{xeCJK} %CJK Environment
+
+\usepackage[
+	a4paper,
+	top=2cm, 
+	bottom=2cm,
+	left=2cm,
+	right=2cm,
+	includehead, includefoot,
+	heightrounded
+]{geometry}
+
+\usepackage{fatscience}
+
+%%% Bibliography %%%
+% \addbibresource{references.bib}
+%%% Bibliography %%%
+
+\usepackage{enumitem}
+
+% Setting enumerate and itemize enrvironment spacing: 
+\setlist[enumerate]{itemsep = <num>mm}
+\setlist[itemize]{itemsep = <num>mm}
+
+%%% Font Configuration
+%% Main fonts (Using default)
+% \setmainfont{FreeSans} % FreeSans
+% \setmainfont{Times New Roman}
+
+%% CJK fonts
+% \setCJKmainfont{Noto Sans CJK TC} % Noto Sans CJK Fonts
+\setCJKmainfont[AutoFakeBold]{AR PL UKai TW} % Arphic Kaiti
+% \setCJKmainfont[AutoFakeBold]{AR PL UMing TW} % Arphic Mingti
+
+% Add the AutoFakeBold option to fake the bold font if font does not include a bold version by default, for example:  
+% \setCJKmainfont[Path = <Path to font folder>, AutoFakeBold]{<fontfile>}
+
+% Hyperref settings
+\urlstyle{same}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	% pdfpagemode=FullScreen, % Full screen display PageMode PDF Property
+}
+\makeatletter
+\AtBeginDocument{
+    \hypersetup{
+        pdftitle=\@title,
+        pdfauthor=\@author,
+    }
+}
+\makeatother
+
+%%% Modify environment display format (Chinese environments) %%%
+% \renewcommand\thethm{\arabic{section}.\arabic{thm}} % Controls both the thm and thms environments
+% \renewcommand\theex{\arabic{section}.\arabic{ex}}
+% \renewcommand\theexer{\arabic{section}.\arabic{exer}}
+% \renewcommand\theprob{\arabic{section}.\arabic{prob}}
+% \renewcommand\thelem{\arabic{section}.\arabic{lem}}
+
+\linespread{1.2}
+\pagestyle{fancy}
+\title{\textbf{\Huge{Template}}}
+\fancyhead[L]{Template}
+
+\author{\Large{fat}}
+% \date{\today}
+\date{August 28, 2024}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\renewcommand{\footrulewidth}{0.4pt}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+%%% Chinese section, figure caption  %%%
+% \renewcommand{\thesection}{\zhnumber{\arabic{section}}\text{、 }}
+% \renewcommand{\thesubsection}{\zhnumber{\arabic{subsection}}\text{、 }}
+% \renewcommand{\figurename}{圖}
+% \renewcommand{\tablename}{表}
+%%% Chinese section, figure caption  %%%
+
+
+
+
+
+
+
+
+
+
+% \appendix
+% \renewcommand{\thesection}{Appendix \Alph{section}}
+% \section{}
+
+% \newpage
+% \raggedright
+% \printbibliography
+\end{document}
+
+
+
+
+
+
