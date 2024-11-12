@@ -1,0 +1,81 @@
+\documentclass{fatslides}
+
+%%% Bibliography %%%
+% \addbibresource{references.bib}
+%%% Bibliography %%%
+
+\title[Short Title]{Full Title}
+
+\author[Short Author]{Foo \and Bar}
+
+\date[\today]{\today}
+
+% \logo{\includegraphics[height = 1cm]{pics/<somepicture>.jpg}
+
+%%% Table of Contents on Section Begin %%%
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{Table of Contents}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+%%% Table of Contents on Section Begin %%%
+
+%%% Last Page %%%
+% \AtEndDocument
+% {
+% 	\begin{frame}
+% 		The last slide
+% 	\end{frame}
+% }
+%%% Last Page %%%
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Introduction}
+\begin{figure}[H]
+    \centering
+	Blah 
+\end{figure}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+	Foo \pause
+	Bar
+\end{frame}
+
+%%% References %%%
+% \begin{frame}[allowframebreaks]{References}
+% 	\raggedright
+% 	\printbibliography
+% \end{frame}
+%%% References %%%
+
+%%% Appendix %%%
+% \appendix
+% \section*{Appendix}
+% \begin{frame}{Appendix}
+% 	\raggedright
+% 	\printbibliography
+% \end{frame}
+%%% Appendix %%%
+
+\end{document}
+
+
+
+
+
+
