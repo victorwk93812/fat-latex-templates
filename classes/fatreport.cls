@@ -108,10 +108,16 @@
 \setlist[itemize]{itemsep=-1mm}
 \linespread{1.2}
 
+% Fancy formatting
 \pagestyle{fancy}
 \renewcommand{\footrulewidth}{0.4pt}
 \cfoot{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+
+% Fancy footnote patch
+\let\origfootrule\footrule
+\renewcommand{\footrule}{\iffootnote{}{\origfootrule}}
+\renewcommand\footnoterule{\origfootrule}
 
 %%%%% Document Setup Example %%%%%
 
