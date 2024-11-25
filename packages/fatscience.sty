@@ -176,6 +176,8 @@
 % tcolorbox Tutorial
 % https://liam.page/2016/07/22/using-the-tcolorbox-package-to-create-a-new-theorem-environment/
 
+\RequirePackage{siunitx}
+
 \RequirePackage{array} % Fixes width or height for a column or row in a tabular environment
 \newcolumntype{F}{>{$}l<{$}} % math-mode version of "l" column type
 \newcolumntype{M}{>{$}c<{$}} % math-mode version of "c" column type
@@ -254,7 +256,7 @@
 % \boldmath{<greek letters>}
 
 \RequirePackage{tikz}
-\usetikzlibrary{shapes.geometric, shapes.symbols, shapes.arrows, shapes.multipart, shapes.callouts, shapes.misc, arrows, chains, scopes, trees, positioning, animations}
+\usetikzlibrary{shapes.geometric, shapes.symbols, shapes.arrows, shapes.multipart, shapes.callouts, shapes.misc, arrows.meta, bending, chains, scopes, trees, positioning, animations}
 
 % Drawing graphs using tikz
 % \begin{figure}[H]
@@ -317,12 +319,19 @@ text centered,
 text width=3cm, 
 draw=black, 
 fill=orange!30]
-\tikzstyle{decision} = [diamond, 
+\tikzstyle{decision} = [trapezium, 
+trapezium stretches=true, % A later addition
+trapezium left angle=70, 
+trapezium right angle=110, 
 minimum width=3cm, 
-minimum height=1cm, 
-text centered, 
-draw=black, 
-fill=green!30]
+minimum height=1cm, text centered, 
+draw=black, fill=green!30]
+% \tikzstyle{decision} = [diamond, 
+% minimum width=3cm, 
+% minimum height=1cm, 
+% text centered, 
+% draw=black, 
+% fill=green!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 % Flowcharts example  
@@ -346,6 +355,10 @@ fill=green!30]
 % \draw [arrow] (out1) -- (stop);
 % \end{tikzpicture}
 % \end{center}
+
+\RequirePackage{animate}
+
+\RequirePackage{xparse}
 
 \RequirePackage{forest}
 
