@@ -251,6 +251,27 @@
 % 	Seminar Room &&&&&\\\hline
 % \end{tabular}
 
+\RequirePackage{makecell}
+
+% The \thead[vh]{Text of a title cell} command is the bold text version of \makecell[vh]{text}.
+% The default settings could be set using the preamables such as:
+% \renewcommand\theadalign{bc}
+% \renewcommand\theadfont{\bfseries}
+% \renewcommand\theadgape{\Gape[4pt]}
+% \renewcommand\cellgape{\Gape[4pt]}
+% The \makecell[vh]{Text of a cell in a table} command could be used to wrap the text of a cell in a tabular environment. 
+% This package provides additional feature to table cells, such as inline alignment adjustments, line break feature, title cell, etc. 
+% Options v could be one of t (top), c (center) and b(bottom), while h could be one of l(left), c(center) and r(right). 
+% For more information from the manual go to <https://ctan.org/pkg/makecell>. 
+% Example:
+% \begin{tabular}{|c|c|c|}
+%   \hline
+%   \thead{a head} & \thead{a second \\ head} & \thead{a third \\ head} \\
+%   \hline
+%   some text &  \makecell{some really \\ longer text}  & text text text  \\
+%   \hline
+% \end{tabular}
+
 \RequirePackage{bm}
 
 % \boldmath{<greek letters>}
