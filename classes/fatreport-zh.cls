@@ -1,12 +1,20 @@
-%%%%% fatreport.cls %%%%%
+%%%%% fatreport-zh.cls %%%%%
 
-%% A LaTeX class with CJK environment, fancy format and more commonly used LaTeX features %%
-%% After setting up the prerequisites, should work out of the box on Overleaf %%
+%% If using TeXLive, put this class under ~/texmf/tex/latex/local for TeXLive detection %%
+%% Should work out of the box in Overleaf %%
+
+%%% Usage %%%
+
+% 1. To use this class: \documentclass{fatreport-zh}
+% 2. This class is based on the article class. 
+% Passing an option to this class directly is passing the option to article. 
+% E.g. \documentclass[12pt]{fatreport-zh} works as specifying \documentclass[12pt]{article} internally. 
+% 3. BibTeX is supported, just use as usual. 
 
 %%%%% Identification %%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fatreport}[2025/04/15 Personal frequently used latex report configuration]
+\ProvidesClass{fatreport-zh}[2025/04/16 Personal frequently used latex Mandarin report configuration]
 
 %%%%% Preliminary Declarations %%%%%
 
@@ -40,7 +48,7 @@
 % \setlist[enumerate]{itemsep = <num>mm}
 % \setlist[itemize]{itemsep = <num>mm}
 
-\usepackage{fatscience}
+\RequirePackage{fatscience}
 
 % \DeclareOption{blue}{\renewcommand{\wordcolour}{mybluecolour}}
 % \DeclareOption*{\PackageWarning{examplepackage}{Unknown ‘\CurrentOption’}}
@@ -63,9 +71,9 @@
 \urlstyle{same}
 \hypersetup{
 	colorlinks=true,
-	linkcolor=blue,
+	linkcolor=cyan,
 	filecolor=magenta,      
-	urlcolor=cyan,
+	urlcolor=blue,
 	% pdfpagemode=FullScreen, % Full screen display PageMode PDF Property
 }
 \makeatletter
@@ -78,33 +86,23 @@
 \makeatother
 
 %%% Modify environment display format (Chinese environments) %%%
-% \renewcommand\thethmplain{\arabic{section}.\arabic{thmplain}} 
-% \renewcommand{\thesection}{\zhnumber{\arabic{section}}\text{、 }}
+\renewcommand{\thesection}{\zhnumber{\arabic{section}}\text{、 }}
 % \renewcommand{\thesubsection}{\zhnumber{\arabic{subsection}}\text{、 }}
-% \renewcommand{\figurename}{圖}
-% \renewcommand{\tablename}{表}
+\renewcommand{\thesubsection}{\alph{subsection}.}
+\renewcommand{\thesubsubsection}{\alph{subsection}.\arabic{subsubsection}}
+\renewcommand{\figurename}{圖}
+\renewcommand{\tablename}{表}
 %%% Modify environment display format (Chinese environments) %%%
-
-%%% Environment numbering reset when section begins %%%
-% \makeatletter
-% \@addtoreset{thmplain}{section} 
-% \makeatother
-%%% Environment numbering reset when section begins %%%
 
 \setlist[enumerate]{itemsep=-1mm}
 \setlist[itemize]{itemsep=-1mm}
+
 \linespread{1.2}
 
-% Fancy formatting
 \pagestyle{fancy}
 \renewcommand{\footrulewidth}{0.4pt}
 \cfoot{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
-
-% Fancy footnote patch
-\let\origfootrule\footrule
-\renewcommand{\footrule}{\iffootnote{}{\origfootrule}}
-\renewcommand\footnoterule{\origfootrule}
 
 %%%%% Document Setup Example %%%%%
 

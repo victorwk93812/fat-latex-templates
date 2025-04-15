@@ -1,12 +1,25 @@
-%%%%% fatreport.cls %%%%%
+%%%%% fatslides-zh.cls %%%%%
 
-%% A LaTeX class with CJK environment, fancy format and more commonly used LaTeX features %%
-%% After setting up the prerequisites, should work out of the box on Overleaf %%
+%% If using TeXLive, put this class under ~/texmf/tex/latex/local for TeXLive detection %%
+%% Should work out of the box in Overleaf %%
+
+%%% Prerequisites %%%
+
+% 1. Using CJK font "AR PL Ukai TW", install it manually if not installed, otherwise change the font in the "\setCJKmainfont{}" line.   
+% If writing a pure English document, may comment out the `\usepackage{xeCJK}` and `\setCJKmainfont{AR PL Ukai TW}` lines, and things should compile.  
+
+%%% Usage %%%
+
+% 1. To use this class: \documentclass{fatslides-zh}
+% 2. This class is based on the beamer class. 
+% Passing an option to this class directly is passing the option to beamer. 
+% E.g. \documentclass[t]{fatslides-zh} works as specifying \documentclass[t]{beamer} internally. 
+% 3. BibLaTeX is supported, just use as usual. 
 
 %%%%% Identification %%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fatslides}[2025/04/15 Personal frequently used beamer configuration]
+\ProvidesClass{fatslides-zh}[2025/04/15 Personal frequently used beamer configuration]
 
 %%%%% Preliminary Declarations %%%%%
 
@@ -48,9 +61,10 @@
 \useoutertheme{miniframes}
 \usefonttheme{serif}
 
-% Theorem and caption numbering
+% Theorem and cpation numbering
 \setbeamertemplate{theorems}[numbered]
 \setbeamertemplate{caption}[numbered]
+\usefonttheme{serif}
 
 % Hyperref settings
 \urlstyle{same}
@@ -63,18 +77,9 @@
 }
 
 %%% Modify environment display format (Chinese environments) %%%
-% \renewcommand\thethmplain{\arabic{section}.\arabic{thmplain}} 
-% \renewcommand{\thesection}{\zhnumber{\arabic{section}}\text{、 }}
-% \renewcommand{\thesubsection}{\zhnumber{\arabic{subsection}}\text{、 }}
-% \renewcommand{\figurename}{圖}
-% \renewcommand{\tablename}{表}
+\renewcommand{\figurename}{圖}
+\renewcommand{\tablename}{表}
 %%% Modify environment display format (Chinese environments) %%%
-
-%%% Environment numbering reset when section begins %%%
-% \makeatletter
-% \@addtoreset{thmplain}{section} 
-% \makeatother
-%%% Environment numbering reset when section begins %%%
 
 % \linespread{1.2}
 
