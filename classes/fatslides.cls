@@ -6,13 +6,16 @@
 %%%%% Identification %%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fatslides}[2024/11/11 Personal frequently used beamer configuration]
+\ProvidesClass{fatslides}[2025/04/15 Personal frequently used beamer configuration]
 
 %%%%% Preliminary Declarations %%%%%
 
 %%%%% Options %%%%%
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
+\DeclareOption*{
+\PassOptionsToClass{\CurrentOption}{beamer}
+\PassOptionsToPackage{\CurrentOption}{fatscience}
+}
 \ProcessOptions\relax
 \LoadClass{beamer}
 

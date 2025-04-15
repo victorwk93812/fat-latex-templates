@@ -6,13 +6,16 @@
 %%%%% Identification %%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fatreport}[2024/11/11 Personal frequently used latex report configuration]
+\ProvidesClass{fatreport}[2025/04/15 Personal frequently used latex report configuration]
 
 %%%%% Preliminary Declarations %%%%%
 
 %%%%% Options %%%%%
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption*{
+\PassOptionsToClass{\CurrentOption}{article}
+\PassOptionsToPackage{\CurrentOption}{fatscience}
+}
 \ProcessOptions\relax
 \LoadClass{article}
 
@@ -37,7 +40,7 @@
 % \setlist[enumerate]{itemsep = <num>mm}
 % \setlist[itemize]{itemsep = <num>mm}
 
-\RequirePackage{fatscience}
+\usepackage{fatscience}
 
 % \DeclareOption{blue}{\renewcommand{\wordcolour}{mybluecolour}}
 % \DeclareOption*{\PackageWarning{examplepackage}{Unknown ‘\CurrentOption’}}

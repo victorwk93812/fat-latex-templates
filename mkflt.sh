@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # 
 # mkflt.sh
 # Creates a latex project in the COPYME directory. 
@@ -7,11 +7,15 @@
 # 1.
 # 2. 
 #
-# 2024/11/12
+# 2025-04-13
 
 
 test -d COPYME || mkdir COPYME
 rm -rf COPYME/*
+
+# packages location
+texstyentry=packages/fatscience.sty
+texstyimp=packages/fatscience-v2-0.sty
 
 # Boolean array representing specified options -h, -s, -r, -p
 optns=(0 0 0 0)
@@ -19,23 +23,21 @@ optns=(0 0 0 0)
 function makeslides(){
 	local texfile=template-slides.tex
 	local texcls=classes/fatslides.cls
-	local texsty=packages/fatscience.sty
 	if [[ ${optns[3]} == 1 ]]; then
 		echo "mkflt.sh: Plain slides template under development" >&2
 		exit 1
 	fi
-	cp -iu ${texfile} ${texcls} ${texsty} COPYME/
+	cp -iu ${texfile} ${texcls} ${texstyentry} ${texstyimp} COPYME/
 }
 
 function makereport(){
 	local texfile=template-report.tex
 	local texcls=classes/fatreport.cls
-	local texsty=packages/fatscience.sty
 	if [[ ${optns[3]} == 1 ]]; then
 		texfile=template.tex
 		texcls=""
 	fi
-	cp -iu ${texfile} ${texcls} ${texsty} COPYME/
+	cp -iu ${texfile} ${texcls} ${texstyentry} ${texstyimp} COPYME/
 }
 
 function usage(){
