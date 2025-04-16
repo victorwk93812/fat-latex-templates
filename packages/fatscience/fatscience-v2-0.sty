@@ -203,6 +203,8 @@
 \setboolean{algorithmicx}{false}
 \newboolean{zh}
 \setboolean{zh}{false}
+\newboolean{zhenv}
+\setboolean{zhenv}{false}
 
 % See section "Tikz (Optional)"
 \DeclareOption{tikz}{\setboolean{tikz}{true}}
@@ -213,6 +215,7 @@
 % See section "Code/Pseudo Code"
 \DeclareOption{algorithmicx}{\setboolean{algorithmicx}{true}}
 \DeclareOption{zh}{\setboolean{zh}{true}}
+\DeclareOption{zhenv}{\setboolean{zhenv}{true}}
 \DeclareOption*{\PackageWarning{fatscience}{Unknown ‘\CurrentOption’}}
 \ProcessOptions\relax
 
@@ -287,6 +290,15 @@ draw=black, fill=green!30]
 }{}
 % Implementation of amsthm theorem environments
 \ifthenelse{\boolean{zh}}
+{
+\usepackage{xeCJK} %CJK Environment
+%% CJK fonts, fakes bold automatically
+% \setCJKmainfont{Noto Sans CJK TC} % Noto Sans CJK Fonts
+\setCJKmainfont[AutoFakeBold]{AR PL UKai TW} % Arphic Kaiti
+% \setCJKmainfont[AutoFakeBold]{AR PL UMing TW} % Arphic Mingti
+% \setCJKmainfont[Path = <Path to font folder>, AutoFakeBold]{<fontfile>}
+}{}
+\ifthenelse{\boolean{zhenv}}
 {
 \usepackage{xeCJK} %CJK Environment
 %% CJK fonts, fakes bold automatically
