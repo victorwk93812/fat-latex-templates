@@ -22,7 +22,6 @@
 %%%%% More Declarations %%%%%
 
 % \usepackage[utf8]{inputenc}
-\usepackage{xeCJK} %CJK Environment
 
 \usepackage[
 	a4paper,
@@ -42,22 +41,10 @@
 
 \usepackage{fatscience}
 
-% \DeclareOption{blue}{\renewcommand{\wordcolour}{mybluecolour}}
-% \DeclareOption*{\PackageWarning{examplepackage}{Unknown ‘\CurrentOption’}}
-% \ProcessOptions\relax
-
 %%% Font Configuration
 %% Main fonts (Using default)
 % \setmainfont{FreeSans} % FreeSans
 % \setmainfont{Times New Roman}
-
-%% CJK fonts
-% \setCJKmainfont{Noto Sans CJK TC} % Noto Sans CJK Fonts
-\setCJKmainfont[AutoFakeBold]{AR PL UKai TW} % Arphic Kaiti
-% \setCJKmainfont[AutoFakeBold]{AR PL UMing TW} % Arphic Mingti
-
-% Add the AutoFakeBold option to fake the bold font if font does not include a bold version by default, for example:  
-% \setCJKmainfont[Path = <Path to font folder>, AutoFakeBold]{<fontfile>}
 
 % Hyperref settings
 \urlstyle{same}
@@ -77,20 +64,6 @@
 }
 \makeatother
 
-%%% Modify environment display format (Chinese environments) %%%
-% \renewcommand\thethmplain{\arabic{section}.\arabic{thmplain}} 
-% \renewcommand{\thesection}{\zhnumber{\arabic{section}}\text{、 }}
-% \renewcommand{\thesubsection}{\zhnumber{\arabic{subsection}}\text{、 }}
-% \renewcommand{\figurename}{圖}
-% \renewcommand{\tablename}{表}
-%%% Modify environment display format (Chinese environments) %%%
-
-%%% Environment numbering reset when section begins %%%
-% \makeatletter
-% \@addtoreset{thmplain}{section} 
-% \makeatother
-%%% Environment numbering reset when section begins %%%
-
 \setlist[enumerate]{itemsep=-1mm}
 \setlist[itemize]{itemsep=-1mm}
 \linespread{1.2}
@@ -106,17 +79,3 @@
 \renewcommand{\footrule}{\iffootnote{}{\origfootrule}}
 \renewcommand\footnoterule{\origfootrule}
 
-%%%%% Document Setup Example %%%%%
-
-%%% Copy this, place right before \begin{document} and uncomment %%%
-% \pagestyle{fancy}
-% \title{\textbf{\Huge{Template}}}
-% \author{\Large{fat}}
-% % \date{\today}
-% \date{August 28, 2024}
-%%% Copy this, place right before \begin{document} and uncomment %%%
-
-%%% Copy this, place right after \begin{document} and uncomment %%%
-% \maketitle
-% \thispagestyle{fancy}
-%%% Copy this, place right after \begin{document} and uncomment %%%

@@ -1,0 +1,1203 @@
+\theoremstyle{definition}
+% \theoremstyle{plain}
+
+% Define the base theorem environment
+\newtheorem{thmplain}{定理}[section]
+\newtheorem*{thmplain*}{定理}
+\newtheorem{custhmplain}{定理}[section]
+
+% Colored version using same counter
+\tcbuselibrary{theorems}
+\NewTColorBox[use counter=thmplain]{thmboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={定理~\thethmplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{thmboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={定理 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{custhmboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={定理\IfNoValueTF{#2}{\thethmplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{thm}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{thmboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{thmplain}
+        }
+        {
+            \begin{thmplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{thmboxed}}{\end{thmplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{thm*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{thmboxed*}[#3] % thmboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{thmplain*}
+        }
+        {
+            \begin{thmplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{thmboxed*}}{\end{thmplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{custhm}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{custhmboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecusthmplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{custhmplain}
+        }
+        {
+            \begin{custhmplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{custhmboxed}}{\end{custhmplain}}
+}
+
+
+% Lemma version
+\newtheorem{lemplain}[thmplain]{引理}
+\newtheorem*{lemplain*}{引理}
+\newtheorem{cuslemplain}{引理}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=thmplain]{lemboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=blue!5!white, 
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={引理~\thethmplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{lemboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=blue!5!white, 
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={引理 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cuslemboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=blue!5!white, 
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={引理\IfNoValueTF{#2}{\thethmplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{lem}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{lemboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{lemplain}
+        }
+        {
+            \begin{lemplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{lemboxed}}{\end{lemplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{lem*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{lemboxed*}[#3] % lemboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{lemplain*}
+        }
+        {
+            \begin{lemplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{lemboxed*}}{\end{lemplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cuslem}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cuslemboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecuslemplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cuslemplain}
+        }
+        {
+            \begin{cuslemplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cuslemboxed}}{\end{cuslemplain}}
+}
+
+% Proposition version
+\newtheorem{propplain}[thmplain]{命題}
+\newtheorem*{propplain*}{命題}
+\newtheorem{cuspropplain}{命題}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=thmplain]{propboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=blue!5!white, 
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={命題~\thethmplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{propboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=blue!5!white, 
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={命題 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cuspropboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=blue!5!white, 
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={命題\IfNoValueTF{#2}{\thethmplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{prop}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{propboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{propplain}
+        }
+        {
+            \begin{propplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{propboxed}}{\end{propplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{prop*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{propboxed*}[#3] % propboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{propplain*}
+        }
+        {
+            \begin{propplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{propboxed*}}{\end{propplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cusprop}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cuspropboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecuspropplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cuspropplain}
+        }
+        {
+            \begin{cuspropplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cuspropboxed}}{\end{cuspropplain}}
+}
+
+
+% Corollary version
+\newtheorem{corplain}[thmplain]{推論}
+\newtheorem*{corplain*}{推論}
+\newtheorem{cuscorplain}{推論}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=thmplain]{corboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=purple!5!white, 
+    colframe=purple!75!black,
+    fonttitle=\bfseries,
+    title={推論~\thethmplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{corboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=purple!5!white, 
+    colframe=purple!75!black,
+    fonttitle=\bfseries,
+    title={推論 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cuscorboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=purple!5!white, 
+    colframe=purple!75!black,
+    fonttitle=\bfseries,
+    title={推論\IfNoValueTF{#2}{\thethmplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{cor}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{corboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{corplain}
+        }
+        {
+            \begin{corplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{corboxed}}{\end{corplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{cor*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{corboxed*}[#3] % corboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{corplain*}
+        }
+        {
+            \begin{corplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{corboxed*}}{\end{corplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cuscor}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cuscorboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecuscorplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cuscorplain}
+        }
+        {
+            \begin{cuscorplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cuscorboxed}}{\end{cuscorplain}}
+}
+
+
+% Definition version
+\newtheorem{dfnplain}{定義}[section]
+\newtheorem*{dfnplain*}{定義}
+\newtheorem{cusdfnplain}{定義}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=dfnplain]{dfnboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=green!5!white, 
+    colframe=green!75!black,
+    fonttitle=\bfseries,
+    title={定義~\thedfnplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{dfnboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=green!5!white, 
+    colframe=green!75!black,
+    fonttitle=\bfseries,
+    title={定義 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cusdfnboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=green!5!white, 
+    colframe=green!75!black,
+    fonttitle=\bfseries,
+    title={定義\IfNoValueTF{#2}{\thedfnplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{dfn}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{dfnboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{dfnplain}
+        }
+        {
+            \begin{dfnplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{dfnboxed}}{\end{dfnplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{dfn*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{dfnboxed*}[#3] % dfnboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{dfnplain*}
+        }
+        {
+            \begin{dfnplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{dfnboxed*}}{\end{dfnplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cusdfn}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cusdfnboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecusdfnplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cusdfnplain}
+        }
+        {
+            \begin{cusdfnplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cusdfnboxed}}{\end{cusdfnplain}}
+}
+
+
+% Example version
+\newtheorem{exmpplain}{範例}[section]
+\newtheorem*{exmpplain*}{範例}
+\newtheorem{cusexmpplain}{範例}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=exmpplain]{exmpboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=yellow!5!white, 
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title={範例~\theexmpplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{exmpboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=yellow!5!white, 
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title={範例 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cusexmpboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=yellow!5!white, 
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title={範例\IfNoValueTF{#2}{\theexmpplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{exmp}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{exmpboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{exmpplain}
+        }
+        {
+            \begin{exmpplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{exmpboxed}}{\end{exmpplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{exmp*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{exmpboxed*}[#3] % exmpboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{exmpplain*}
+        }
+        {
+            \begin{exmpplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{exmpboxed*}}{\end{exmpplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cusexmp}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cusexmpboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecusexmpplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cusexmpplain}
+        }
+        {
+            \begin{cusexmpplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cusexmpboxed}}{\end{cusexmpplain}}
+}
+
+
+% Exercise version
+\newtheorem{exerplain}{練習}[section]
+\newtheorem*{exerplain*}{練習}
+\newtheorem{cusexerplain}{練習}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=exerplain]{exerboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=yellow!5!white, 
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title={練習~\theexerplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{exerboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=yellow!5!white, 
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title={練習 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cusexerboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=yellow!5!white, 
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title={練習\IfNoValueTF{#2}{\theexerplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{exer}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{exerboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{exerplain}
+        }
+        {
+            \begin{exerplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{exerboxed}}{\end{exerplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{exer*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{exerboxed*}[#3] % exerboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{exerplain*}
+        }
+        {
+            \begin{exerplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{exerboxed*}}{\end{exerplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cusexer}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cusexerboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecusexerplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cusexerplain}
+        }
+        {
+            \begin{cusexerplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cusexerboxed}}{\end{cusexerplain}}
+}
+
+
+% Problem version
+\newtheorem{probplain}[exerplain]{問題}
+\newtheorem*{probplain*}{問題}
+\newtheorem{cusprobplain}{問題}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=exerplain]{probboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=yellow!5!white, 
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title={問題~\theexerplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{probboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=yellow!5!white, 
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title={問題 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cusprobboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=yellow!5!white, 
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title={問題\IfNoValueTF{#2}{\theexerplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{prob}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{probboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{probplain}
+        }
+        {
+            \begin{probplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{probboxed}}{\end{probplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{prob*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{probboxed*}[#3] % probboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{probplain*}
+        }
+        {
+            \begin{probplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{probboxed*}}{\end{probplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cusprob}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cusprobboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecusprobplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cusprobplain}
+        }
+        {
+            \begin{cusprobplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cusprobboxed}}{\end{cusprobplain}}
+}
+
+
+% Remark version
+\newtheorem{remplain}{註釋}[section]
+\newtheorem*{remplain*}{註釋}
+\newtheorem{cusremplain}{註釋}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=remplain]{remboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=red!5!white, 
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={註釋~\theremplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{remboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=red!5!white, 
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={註釋 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cusremboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=red!5!white, 
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={註釋\IfNoValueTF{#2}{\theremplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{rem}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{remboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{remplain}
+        }
+        {
+            \begin{remplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{remboxed}}{\end{remplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{rem*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{remboxed*}[#3] % remboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{remplain*}
+        }
+        {
+            \begin{remplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{remboxed*}}{\end{remplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cusrem}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cusremboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecusremplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cusremplain}
+        }
+        {
+            \begin{cusremplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cusremboxed}}{\end{cusremplain}}
+}
+
+
+% Claim version
+\newtheorem{clmplain}{宣稱}
+\newtheorem*{clmplain*}{宣稱}
+\newtheorem{cusclmplain}{宣稱}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=clmplain]{clmboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=red!5!white, 
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={宣稱~\theclmplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{clmboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=red!5!white, 
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={宣稱 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cusclmboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=red!5!white, 
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={宣稱\IfNoValueTF{#2}{\theclmplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{clm}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{clmboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{clmplain}
+        }
+        {
+            \begin{clmplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{clmboxed}}{\end{clmplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{clm*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{clmboxed*}[#3] % clmboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{clmplain*}
+        }
+        {
+            \begin{clmplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{clmboxed*}}{\end{clmplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cusclm}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cusclmboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecusclmplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cusclmplain}
+        }
+        {
+            \begin{cusclmplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cusclmboxed}}{\end{cusclmplain}}
+}
+
+% Solution version
+\newtheorem{solplain}{解}
+\newtheorem*{solplain*}{解}
+\newtheorem{cussolplain}{解}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=solplain]{solboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=orange!5!white, 
+    colframe=orange!75!black,
+    fonttitle=\bfseries,
+    title={解~\thesolplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{solboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=orange!5!white, 
+    colframe=orange!75!black,
+    fonttitle=\bfseries,
+    title={解 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cussolboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=orange!5!white, 
+    colframe=orange!75!black,
+    fonttitle=\bfseries,
+    title={解\IfNoValueTF{#2}{\thesolplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{sol}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{solboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{solplain}
+        }
+        {
+            \begin{solplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{solboxed}}{\end{solplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{sol*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{solboxed*}[#3] % solboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{solplain*}
+        }
+        {
+            \begin{solplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{solboxed*}}{\end{solplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cussol}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cussolboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecussolplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cussolplain}
+        }
+        {
+            \begin{cussolplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cussolboxed}}{\end{cussolplain}}
+}
+
+% Notation version
+\newtheorem{ntnplain}{約定}
+\newtheorem*{ntnplain*}{約定}
+\newtheorem{cusntnplain}{約定}[section]
+
+% Colored version using same counter
+\NewTColorBox[use counter=ntnplain]{ntnboxed}{ o }{
+    breakable,
+    enhanced,
+    colback=red!5!white, 
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={約定~\thentnplain \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{ntnboxed*}{ o }{
+    breakable,
+    enhanced,
+    colback=red!5!white, 
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={約定 \IfNoValueTF{#1}{}{ (#1)}}
+}
+\NewTColorBox[no counter]{cusntnboxed}{ o o }{
+    breakable,
+    enhanced,
+    colback=red!5!white, 
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={約定\IfNoValueTF{#2}{\thentnplain}{#2} \IfNoValueTF{#1}{}{ (#1)}}
+}
+
+% Numbered theorem with options: linebreak, fancy, title
+\NewDocumentEnvironment{ntn}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    { 
+        \begin{ntnboxed}[#3] 
+    }
+    { 
+        \IfNoValueTF{#3}
+        {
+            \begin{ntnplain}
+        }
+        {
+            \begin{ntnplain}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{ntnboxed}}{\end{ntnplain}}
+}
+
+% Unnumbered version with optional linebreak, fancy, and title
+\NewDocumentEnvironment{ntn*}{ t* t! o }
+{
+    \IfBooleanTF{#2}
+    {
+        \begin{ntnboxed*}[#3] % ntnboxed already uses the counter; we’ll hide it manually
+    }
+    {
+        \IfNoValueTF{#3}
+        {
+            \begin{ntnplain*}
+        }
+        {
+            \begin{ntnplain*}[#3]
+        }
+    }
+    \IfBooleanTF{#1}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#2}{\end{ntnboxed*}}{\end{ntnplain*}}
+}
+
+% Custom-numbered version with optional linebreak and fancy, and title
+\NewDocumentEnvironment{cusntn}{ m t* t! o }
+{
+    \IfBooleanTF{#3}
+    { 
+        \begin{cusntnboxed}[#4][#1] 
+    }
+    {
+        \renewcommand{\thecusntnplain}{#1} 
+        \IfNoValueTF{#4}
+        {
+            \begin{cusntnplain}
+        }
+        {
+            \begin{cusntnplain}[#4]
+        }
+    }
+    \IfBooleanTF{#2}{\leavevmode\par}{}
+}
+{
+    \IfBooleanTF{#3}{\end{cusntnboxed}}{\end{cusntnplain}}
+}
+
+% Remove amsthm theorem environment title ending period
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+\makeatother
+
+\renewcommand{\thethmplain}{\arabic{section}.\arabic{thmplain}.}
+\renewcommand{\thelemplain}{\arabic{section}.\arabic{lemplain}.}
+\renewcommand{\thepropplain}{\arabic{section}.\arabic{propplain}.}
+\renewcommand{\thecorplain}{\arabic{section}.\arabic{corplain}.}
+\renewcommand{\thedfnplain}{\arabic{section}.\arabic{dfnplain}.}
+\renewcommand{\theexmpplain}{\arabic{section}.\arabic{exmpplain}.}
+\renewcommand{\theexerplain}{\arabic{section}.\arabic{exerplain}.}
+\renewcommand{\theprobplain}{\arabic{section}.\arabic{probplain}.}
+\renewcommand{\theremplain}{\arabic{section}.\arabic{remplain}.}

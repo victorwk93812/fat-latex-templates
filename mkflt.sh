@@ -7,37 +7,40 @@
 # 1.
 # 2. 
 #
-# 2025-04-13
+# 2025-04-16
 
 
 test -d COPYME || mkdir COPYME
 rm -rf COPYME/*
 
 # packages location
-texstyentry=packages/fatscience.sty
-texstyimp=packages/fatscience-v2-0.sty
+pdir=packages/
+cdir=classes/
+tdir=templates/
+adj=adjustments.tex
+mkrc=latexmkrc
 
 # Boolean array representing specified options -h, -s, -r, -p
 optns=(0 0 0 0)
 
 function makeslides(){
-	local texfile=template-slides.tex
-	local texcls=classes/fatslides.cls
+	local texfile="${tdir}template-slides.tex"
+	local texcls="${cdir}fatslides.cls"
 	if [[ ${optns[3]} == 1 ]]; then
 		echo "mkflt.sh: Plain slides template under development" >&2
 		exit 1
 	fi
-	cp -iu ${texfile} ${texcls} ${texstyentry} ${texstyimp} COPYME/
+	cp -iur ${texfile} ${texcls} ${pdir} ${adj} ${mkrc} COPYME/
 }
 
 function makereport(){
-	local texfile=template-report.tex
-	local texcls=classes/fatreport.cls
+	local texfile="${tdir}template-report.tex"
+	local texcls="${cdir}fatreport.cls"
 	if [[ ${optns[3]} == 1 ]]; then
-		texfile=template.tex
+		texfile="${tdir}template.tex"
 		texcls=""
 	fi
-	cp -iu ${texfile} ${texcls} ${texstyentry} ${texstyimp} COPYME/
+	cp -iur ${texfile} ${texcls} ${pdir} ${adj} ${mkrc} COPYME/
 }
 
 function usage(){

@@ -21,27 +21,14 @@
 
 %%%%% More Declarations %%%%%
 
-\RequirePackage{fatscience}
-
-% \DeclareOption{blue}{\renewcommand{\wordcolour}{mybluecolour}}
-% \DeclareOption*{\PackageWarning{examplepackage}{Unknown ‘\CurrentOption’}}
-% \ProcessOptions\relax
+\usepackage{fatscience}
 
 % \usepackage[utf8]{inputenc}
-\usepackage{xeCJK} %CJK Environment
 
 %%% Font Configuration
 %% Main fonts (Using default)
 % \setmainfont{FreeSans} % FreeSans
 % \setmainfont{Times New Roman}
-
-%% CJK fonts
-% \setCJKmainfont{Noto Sans CJK TC} % Noto Sans CJK Fonts
-\setCJKmainfont[AutoFakeBold]{AR PL UKai TW} % Arphic Kaiti
-% \setCJKmainfont[AutoFakeBold]{AR PL UMing TW} % Arphic Mingti
-
-% Add the AutoFakeBold option to fake the bold font if font does not include a bold version by default, for example:  
-% \setCJKmainfont[Path = <Path to font folder>, AutoFakeBold]{<fontfile>}
 
 % Themes
 \usetheme{Boadilla}
@@ -62,41 +49,4 @@
     pdfpagemode=FullScreen, % Full screen display PageMode PDF Property
 }
 
-%%% Modify environment display format (Chinese environments) %%%
-% \renewcommand\thethmplain{\arabic{section}.\arabic{thmplain}} 
-% \renewcommand{\thesection}{\zhnumber{\arabic{section}}\text{、 }}
-% \renewcommand{\thesubsection}{\zhnumber{\arabic{subsection}}\text{、 }}
-% \renewcommand{\figurename}{圖}
-% \renewcommand{\tablename}{表}
-%%% Modify environment display format (Chinese environments) %%%
-
-%%% Environment numbering reset when section begins %%%
-% \makeatletter
-% \@addtoreset{thmplain}{section} 
-% \makeatother
-%%% Environment numbering reset when section begins %%%
-
 % \linespread{1.2}
-
-%%%%% Document Setup Example %%%%%
-
-%%% Copy this, place right before \begin{document} and uncomment %%%
-% \title[Short Title]{Full Title}
-% \author[Short Author]{Foo \and Bar}
-% \date[\today]{\today}
-% \AtBeginSection[]
-% {
-%   \begin{frame}
-%     \frametitle{Table of Contents}
-%     \tableofcontents[currentsection]
-%   \end{frame}
-% }
-%%% Copy this, place right before \begin{document} and uncomment %%%
-
-%%% Copy this, place right after \begin{document} and uncomment %%%
-% \frame{\titlepage}
-% \begin{frame}
-%     \frametitle{Table of Contents}
-%     \tableofcontents
-% \end{frame}
-%%% Copy this, place right after \begin{document} and uncomment %%%

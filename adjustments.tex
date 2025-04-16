@@ -1,0 +1,30 @@
+%%% Modify environment display format (Chinese environments) %%%
+%% Theorem type counters %% 
+% Same type used for Theorem (binded with Lemma, Corollay, Proposition), Definition, Example, Exercise (binded with Problem). 
+% \renewcommand{\thethmplain}{\thesection.\arabic{thmplain}} % The default counter of Theorem Type
+%% Changing Theorem type counters %%
+% \renewcommand{\thethmplain}{\arabic{thmplain}} % Controls Theorem, Lemma, Corollary, Proposition
+% \renewcommand{\thedfnplain}{\arabic{dfnplain}} % Controls Definition
+% \renewcommand{\theexmpplain}{\arabic{exmpplain}} % Controls Example
+% \renewcommand{\theexerplain}{\arabic{exerplain}} % Controls Exercise, Problem
+% \renewcommand{\theremplain}{\arabic{remplain}} % Controls Remark
+%% Claim type counters %%
+% Same type used for Claim, Solution, Notation
+% \renewcommand{\theclmplain}{\arabic{clmplain}} % The default counter of Claim type
+%% Changing Claim type counters %%
+% \renewcommand{\theclmplain}{\thesection.\arabic{clmplain}} % Controls Claim
+% \renewcommand{\thesolplain}{\thesection.\arabic{solplain}} % Controls Solution
+% \renewcommand{\thentnplain}{\thesection.\arabic{ntnplain}} % Controls Notation
+%% Chinese Labels %%
+% \renewcommand{\thesection}{\zhnumber{\arabic{section}}\text{、 }}
+% \renewcommand{\thesubsection}{\zhnumber{\arabic{subsection}}\text{、 }}
+% \renewcommand{\figurename}{圖}
+% \renewcommand{\tablename}{表}
+%%% Modify environment display format (Chinese environments) %%%
+
+%%% Environment numbering reset when section begins %%%
+% \makeatletter
+% \@addtoreset{thmplain}{section} 
+% Apply the same to lemplain, propplain, corplain, dfnplain, exmpplain, exerplain, remplain, solplain, ntnplain. 
+% \makeatother
+%%% Environment numbering reset when section begins %%%
