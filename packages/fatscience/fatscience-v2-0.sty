@@ -367,19 +367,14 @@ draw=black, fill=green!30]
 \NewDocumentCommand{\lu}{}{\leftharpoonup}
 \NewDocumentCommand{\rd}{}{\rightharpoondown}
 \NewDocumentCommand{\ld}{}{\leftharpoondown}
-\NewDocumentCommand{\Gal}{}{\text{Gal}}
-\NewDocumentCommand{\id}{}{\text{id}}
-\NewDocumentCommand{\dist}{}{\text{dist}}
-\NewDocumentCommand{\cha}{}{\text{char}}
-\NewDocumentCommand{\diam}{}{\text{diam}}
 \NewDocumentCommand{\normto}{}{\trianglelefteq}
 \NewDocumentCommand{\snormto}{}{\triangleleft}
 \NewDocumentCommand{\bigcdot}{}{\tikz{\draw[fill=black] (0,0) circle (.5ex);}}
-\makeatletter
-\let\@@span\span
-\def\sp@n{\@@span\omit\advance\@multicnt\m@ne}
-\makeatother
-\renewcommand{\span}{\text{span }}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\diam}{diam}
 
 % See section "Math/Tools/Operator Norm"
 \makeatletter
